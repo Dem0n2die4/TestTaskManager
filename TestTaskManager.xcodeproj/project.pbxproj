@@ -12,6 +12,10 @@
 		BF810DF9279CA35A00211414 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF810DF8279CA35A00211414 /* Assets.xcassets */; };
 		BF810DFC279CA35A00211414 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF810DFB279CA35A00211414 /* Preview Assets.xcassets */; };
 		BF810DFF279CA35A00211414 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF810DFD279CA35A00211414 /* Main.storyboard */; };
+		BFE56B74279CB1ED0014A31B /* TestTaskManagerControl.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE56B73279CB1ED0014A31B /* TestTaskManagerControl.h */; };
+		BFE56B76279CB1ED0014A31B /* TestTaskManagerControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE56B75279CB1ED0014A31B /* TestTaskManagerControl.m */; };
+		BFE56B78279CB1ED0014A31B /* TestTaskManagerControl.tiff in Resources */ = {isa = PBXBuildFile; fileRef = BFE56B77279CB1ED0014A31B /* TestTaskManagerControl.tiff */; };
+		BFE56B7B279CB1ED0014A31B /* TestTaskManagerControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE56B79279CB1ED0014A31B /* TestTaskManagerControl.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,10 +27,23 @@
 		BF810DFE279CA35A00211414 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF810E00279CA35A00211414 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF810E01279CA35A00211414 /* TestTaskManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestTaskManager.entitlements; sourceTree = "<group>"; };
+		BFE56B71279CB1ED0014A31B /* TestTaskManagerControl.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestTaskManagerControl.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFE56B73279CB1ED0014A31B /* TestTaskManagerControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTaskManagerControl.h; sourceTree = "<group>"; };
+		BFE56B75279CB1ED0014A31B /* TestTaskManagerControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTaskManagerControl.m; sourceTree = "<group>"; };
+		BFE56B77279CB1ED0014A31B /* TestTaskManagerControl.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TestTaskManagerControl.tiff; sourceTree = "<group>"; };
+		BFE56B7A279CB1ED0014A31B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TestTaskManagerControl.xib; sourceTree = "<group>"; };
+		BFE56B7C279CB1ED0014A31B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BF810DEE279CA35800211414 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFE56B6E279CB1ED0014A31B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -40,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				BF810DF3279CA35800211414 /* TestTaskManager */,
+				BFE56B72279CB1ED0014A31B /* TestTaskManagerControl */,
 				BF810DF2279CA35800211414 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				BF810DF1279CA35800211414 /* TestTaskManager.app */,
+				BFE56B71279CB1ED0014A31B /* TestTaskManagerControl.prefPane */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,7 +93,30 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		BFE56B72279CB1ED0014A31B /* TestTaskManagerControl */ = {
+			isa = PBXGroup;
+			children = (
+				BFE56B73279CB1ED0014A31B /* TestTaskManagerControl.h */,
+				BFE56B75279CB1ED0014A31B /* TestTaskManagerControl.m */,
+				BFE56B77279CB1ED0014A31B /* TestTaskManagerControl.tiff */,
+				BFE56B79279CB1ED0014A31B /* TestTaskManagerControl.xib */,
+				BFE56B7C279CB1ED0014A31B /* Info.plist */,
+			);
+			path = TestTaskManagerControl;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BFE56B6C279CB1ED0014A31B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFE56B74279CB1ED0014A31B /* TestTaskManagerControl.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		BF810DF0279CA35800211414 /* TestTaskManager */ = {
@@ -94,6 +136,24 @@
 			productReference = BF810DF1279CA35800211414 /* TestTaskManager.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BFE56B70279CB1ED0014A31B /* TestTaskManagerControl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFE56B7F279CB1ED0014A31B /* Build configuration list for PBXNativeTarget "TestTaskManagerControl" */;
+			buildPhases = (
+				BFE56B6C279CB1ED0014A31B /* Headers */,
+				BFE56B6D279CB1ED0014A31B /* Sources */,
+				BFE56B6E279CB1ED0014A31B /* Frameworks */,
+				BFE56B6F279CB1ED0014A31B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestTaskManagerControl;
+			productName = TestTaskManagerControl;
+			productReference = BFE56B71279CB1ED0014A31B /* TestTaskManagerControl.prefPane */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -104,6 +164,9 @@
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					BF810DF0279CA35800211414 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					BFE56B70279CB1ED0014A31B = {
 						CreatedOnToolsVersion = 12.5;
 					};
 				};
@@ -122,6 +185,7 @@
 			projectRoot = "";
 			targets = (
 				BF810DF0279CA35800211414 /* TestTaskManager */,
+				BFE56B70279CB1ED0014A31B /* TestTaskManagerControl */,
 			);
 		};
 /* End PBXProject section */
@@ -137,6 +201,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BFE56B6F279CB1ED0014A31B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFE56B7B279CB1ED0014A31B /* TestTaskManagerControl.xib in Resources */,
+				BFE56B78279CB1ED0014A31B /* TestTaskManagerControl.tiff in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -149,6 +222,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BFE56B6D279CB1ED0014A31B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFE56B76279CB1ED0014A31B /* TestTaskManagerControl.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -158,6 +239,14 @@
 				BF810DFE279CA35A00211414 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BFE56B79279CB1ED0014A31B /* TestTaskManagerControl.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFE56B7A279CB1ED0014A31B /* Base */,
+			);
+			name = TestTaskManagerControl.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -322,6 +411,32 @@
 			};
 			name = Release;
 		};
+		BFE56B7D279CB1ED0014A31B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TestTaskManagerControl/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dbashkalin.TestTaskManagerControl;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = prefPane;
+			};
+			name = Debug;
+		};
+		BFE56B7E279CB1ED0014A31B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TestTaskManagerControl/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dbashkalin.TestTaskManagerControl;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = prefPane;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -339,6 +454,15 @@
 			buildConfigurations = (
 				BF810E05279CA35A00211414 /* Debug */,
 				BF810E06279CA35A00211414 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFE56B7F279CB1ED0014A31B /* Build configuration list for PBXNativeTarget "TestTaskManagerControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFE56B7D279CB1ED0014A31B /* Debug */,
+				BFE56B7E279CB1ED0014A31B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
