@@ -9,9 +9,27 @@ import Foundation
 import AppKit
 import Darwin
 
+public struct ProcessInfo: Identifiable, Codable {
+    public let id = UUID()
+    let pid: Int32
+    let processName: String
+}
+
 public class ProcessManager : NSObject
 {
-    public func GetCmdProcessList() -> [pid_t : String]
+    public static func GetProcesInfoList() -> [ProcessInfo]
+    {
+        var result: [ProcessInfo] = []
+        let procList = GetCmdProcessList()
+        
+        procList.forEach({
+            result.append(ProcessInfo.init(pid: $0.key, processName: $0.value))
+        })
+        
+        return result
+    }
+    
+    public static func GetCmdProcessList() -> [pid_t : String]
     {
         var processes = [pid_t : String]()
         
