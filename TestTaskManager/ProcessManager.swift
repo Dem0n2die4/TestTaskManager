@@ -16,8 +16,8 @@ public class ProcessManager : NSObject
         var processes = [String : String]()
         
         let task = Process()
-        task.launchPath = "/bin/ps"
-        task.arguments = ["-e", "-o pid=,comm="]
+        task.launchPath = "/bin/ps" // What if doesn't exist in system?
+        task.arguments = ["-e", "-o pid=,comm="] // ps -x -o ... user's processes
         
         let outPipe = Pipe()
         task.standardOutput = outPipe
@@ -28,14 +28,13 @@ public class ProcessManager : NSObject
         let data = outPipe.fileHandleForReading.readDataToEndOfFile()
         let str = String(decoding: data, as: UTF8.self)
         
-        let arr = str.components(separatedBy: "\n").map{$0.trimmingCharacters(in: .whitespacesAndNewlines)}
-        arr.map{
-            if let firstEntry = $0.firstIndex(of: " ")
+        str.components(separatedBy: "\n").forEach({
+            let PidProcNameStr = $0.trimmingCharacters(in: .whitespacesAndNewlines)
+            if let firstEntry = PidProcNameStr.firstIndex(of: " ")
             {
-                processes[String($0.prefix(upTo: firstEntry))] = String($0.suffix(from: firstEntry))
+                processes[String(PidProcNameStr.prefix(upTo: firstEntry))] = String(PidProcNameStr.suffix(from: firstEntry))
             }
-            
-        }
+        })
         
         return processes
     }
@@ -54,7 +53,7 @@ public class ProcessManager : NSObject
 //        {
 //            runningProcess.forceTerminate();
 //        }
-        if(kill(pid, SIGTERM) == 0)
+        if(kill(pid, SIGTERM) == 0) // What if doesn't terminate? Need to send SIGKILL?
         {
             return true
         }
