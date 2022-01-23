@@ -11,9 +11,9 @@ import Darwin
 
 public class ProcessManager : NSObject
 {
-    public func GetCmdProcessList() -> [String : String]
+    public func GetCmdProcessList() -> [pid_t : String]
     {
-        var processes = [String : String]()
+        var processes = [pid_t : String]()
         
         let task = Process()
         task.launchPath = "/bin/ps" // What if doesn't exist in system?
@@ -32,7 +32,10 @@ public class ProcessManager : NSObject
             let PidProcNameStr = $0.trimmingCharacters(in: .whitespacesAndNewlines)
             if let firstEntry = PidProcNameStr.firstIndex(of: " ")
             {
-                processes[String(PidProcNameStr.prefix(upTo: firstEntry))] = String(PidProcNameStr.suffix(from: firstEntry))
+                if let pid = Int32(String(PidProcNameStr.prefix(upTo: firstEntry)))
+                {
+                    processes[pid] = String(PidProcNameStr.suffix(from: firstEntry))
+                }
             }
         })
         
