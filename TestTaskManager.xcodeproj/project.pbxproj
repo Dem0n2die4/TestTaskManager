@@ -12,6 +12,7 @@
 		BF810DF9279CA35A00211414 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF810DF8279CA35A00211414 /* Assets.xcassets */; };
 		BF810DFC279CA35A00211414 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF810DFB279CA35A00211414 /* Preview Assets.xcassets */; };
 		BF810DFF279CA35A00211414 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF810DFD279CA35A00211414 /* Main.storyboard */; };
+		BFBAD951279CC03500E03CEC /* ProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAD950279CC03500E03CEC /* ProcessManager.swift */; };
 		BFE56B74279CB1ED0014A31B /* TestTaskManagerControl.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE56B73279CB1ED0014A31B /* TestTaskManagerControl.h */; };
 		BFE56B76279CB1ED0014A31B /* TestTaskManagerControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE56B75279CB1ED0014A31B /* TestTaskManagerControl.m */; };
 		BFE56B78279CB1ED0014A31B /* TestTaskManagerControl.tiff in Resources */ = {isa = PBXBuildFile; fileRef = BFE56B77279CB1ED0014A31B /* TestTaskManagerControl.tiff */; };
@@ -27,6 +28,7 @@
 		BF810DFE279CA35A00211414 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF810E00279CA35A00211414 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF810E01279CA35A00211414 /* TestTaskManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestTaskManager.entitlements; sourceTree = "<group>"; };
+		BFBAD950279CC03500E03CEC /* ProcessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessManager.swift; sourceTree = "<group>"; };
 		BFE56B71279CB1ED0014A31B /* TestTaskManagerControl.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestTaskManagerControl.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE56B73279CB1ED0014A31B /* TestTaskManagerControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTaskManagerControl.h; sourceTree = "<group>"; };
 		BFE56B75279CB1ED0014A31B /* TestTaskManagerControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTaskManagerControl.m; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				BF810E00279CA35A00211414 /* Info.plist */,
 				BF810E01279CA35A00211414 /* TestTaskManager.entitlements */,
 				BF810DFA279CA35A00211414 /* Preview Content */,
+				BFBAD950279CC03500E03CEC /* ProcessManager.swift */,
 			);
 			path = TestTaskManager;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFBAD951279CC03500E03CEC /* ProcessManager.swift in Sources */,
 				BF810DF7279CA35800211414 /* ContentView.swift in Sources */,
 				BF810DF5279CA35800211414 /* AppDelegate.swift in Sources */,
 			);
