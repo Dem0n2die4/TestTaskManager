@@ -12,8 +12,10 @@ import Darwin
 public class ProcessManager : NSObject
 {
     var _processList: [pid_t : String] = [:]
-    var _notificationCenter: NotificationCenter
     var _configuration: ConfigInfo
+    
+    var _notificationCenter: NotificationCenter
+    var _notifyCenter: DistributedNotificationCenter
     
     struct ConfigInfo: Codable {
         var OnlyUser: Bool
@@ -21,6 +23,7 @@ public class ProcessManager : NSObject
 
     public override init() {
         _notificationCenter = NSWorkspace.shared.notificationCenter
+        _notifyCenter = DistributedNotificationCenter()
         _configuration = ConfigInfo(OnlyUser: false)
         
         super.init()
@@ -32,6 +35,10 @@ public class ProcessManager : NSObject
     
     private func InitObservers()
     {
+        _notifyCenter.suspended = false
+        // don't forget to add _notifyCenter.postNotificationName(Notification.Name(rawValue:"TTMConfigurationChanged") on PrefPane
+        _notifyCenter.addObserver(forName: Notification.Name(rawValue: "TTMConfigurationChanged"), object: nil, queue: nil, using: OnConfiguarationChanged)
+        
         _notificationCenter.addObserver(self, selector: #selector(OnProcessStart), name: NSWorkspace.didLaunchApplicationNotification, object: nil)
         _notificationCenter.addObserver(self, selector: #selector(OnProcessTerminate), name: NSWorkspace.didTerminateApplicationNotification, object: nil)
         // subscribe to message from Pref Pane to update configuration
@@ -42,7 +49,6 @@ public class ProcessManager : NSObject
         let fm = FileManager.default
         let configPath = "/etc/ttm.plist"
         
-        var cfg = ConfigInfo(OnlyUser: false)
         if let cfgPlist = fm.contents(atPath: configPath), let config = try? PropertyListDecoder().decode(ConfigInfo.self, from: cfgPlist)
         {
             _configuration = config
@@ -52,6 +58,12 @@ public class ProcessManager : NSObject
             let cfgData = try? PropertyListEncoder().encode(_configuration)
             fm.createFile(atPath: configPath, contents: cfgData, attributes: nil)
         }
+    }
+    
+    @objc func OnConfiguarationChanged(notification: Notification) -> Void
+    {
+        ReadConfiguration()
+        _processList = GetCmdProcessList()
     }
     
     // works only for app with GUI
