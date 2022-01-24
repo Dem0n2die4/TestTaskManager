@@ -13,11 +13,19 @@ public class ProcessManager : NSObject
 {
     var _processList: [pid_t : String] = [:]
     var _notificationCenter: NotificationCenter
+    var _configuration: ConfigInfo
     
+    struct ConfigInfo: Codable {
+        var OnlyUser: Bool
+    }
+
     public override init() {
         _notificationCenter = NSWorkspace.shared.notificationCenter
+        _configuration = ConfigInfo(OnlyUser: false)
+        
         super.init()
         
+        ReadConfiguration()
         _processList = GetCmdProcessList()
         InitObservers()
     }
@@ -26,9 +34,28 @@ public class ProcessManager : NSObject
     {
         _notificationCenter.addObserver(self, selector: #selector(OnProcessStart), name: NSWorkspace.didLaunchApplicationNotification, object: nil)
         _notificationCenter.addObserver(self, selector: #selector(OnProcessTerminate), name: NSWorkspace.didTerminateApplicationNotification, object: nil)
+        // subscribe to message from Pref Pane to update configuration
+    }
+    
+    private func ReadConfiguration()
+    {
+        let fm = FileManager.default
+        let configPath = "/etc/ttm.plist"
+        
+        var cfg = ConfigInfo(OnlyUser: false)
+        if let cfgPlist = fm.contents(atPath: configPath), let config = try? PropertyListDecoder().decode(ConfigInfo.self, from: cfgPlist)
+        {
+            _configuration = config
+        }
+        else
+        {
+            let cfgData = try? PropertyListEncoder().encode(_configuration)
+            fm.createFile(atPath: configPath, contents: cfgData, attributes: nil)
+        }
     }
     
     // works only for app with GUI
+    // for command line process need to call 'ps' in loop
     @objc func OnProcessStart(notification: NSNotification) -> Void
     {
         // insert to proc list
@@ -71,7 +98,7 @@ public class ProcessManager : NSObject
         
         let task = Process()
         task.launchPath = "/bin/ps" // What if doesn't exist in system?
-        task.arguments = ["-e", "-o pid=,comm="] // ps -x -o ... user's processes
+        task.arguments = [_configuration.OnlyUser ? "-x" : "-e", "-o pid=,comm="] // ps -x -o ... user's processes
         
         let outPipe = Pipe()
         task.standardOutput = outPipe
