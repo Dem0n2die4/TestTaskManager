@@ -9,7 +9,7 @@ import Foundation
 import AppKit
 import Darwin
 
-public struct ProcessInfo: Identifiable, Codable {
+public struct ProcessInfo: Identifiable {
     public let id = UUID()
     let pid: Int32
     let processName: String
@@ -20,16 +20,21 @@ public class ProcessManager : NSObject
     public static func GetProcesInfoList() -> [ProcessInfo]
     {
         var result: [ProcessInfo] = []
-        let procList = GetCmdProcessList()
+//        var procList: [pid_t : String] = [:]
+
+
+        let procList = GetCmdProcessList();
         
         procList.forEach({
             result.append(ProcessInfo.init(pid: $0.key, processName: $0.value))
         })
         
-        return result
+        return result.sorted{
+            return $0.pid < $1.pid
+        }
     }
     
-    public static func GetCmdProcessList() -> [pid_t : String]
+    private static func GetCmdProcessList() -> [pid_t : String]
     {
         var processes = [pid_t : String]()
         
@@ -60,28 +65,28 @@ public class ProcessManager : NSObject
         return processes
     }
     
-    public func GetUserProcessList()
+    public static func TerminateProcess(pid: pid_t) -> Bool
     {
-        // NSWorkspace | NSApplication - only userspace
-    }
-    
-    public func TerminateProcess(pid: pid_t) -> Bool
-    {
-        // terminate or run 'cmd kill'
-        
-        //only kills users app
-//        if let runningProcess = NSRunningApplication.init(processIdentifier: pid)
-//        {
-//            runningProcess.forceTerminate();
-//        }
         if(kill(pid, SIGTERM) == 0) // What if doesn't terminate? Need to send SIGKILL?
         {
             return true
         }
+        else if(kill(pid, SIGKILL) == 0)
+        {
+            return true
+        }
+        
+        let app = NSRunningApplication.init(processIdentifier: pid)
+        app?.forceTerminate()
         
         return false
     }
     
+//    public func GetUserProcessList()
+//    {
+//        // NSWorkspace | NSApplication - only userspace
+//    }
+//
 //    // How to update process list?
 //    // Call GetProcessList by timeout?
 //    // Does notification show running root processes?
