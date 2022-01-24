@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var procList: [ ProcessInfo ] = []
+    private var procManager: ProcessManager = ProcessManager.init()
+    
 //    @State private var procList: [ pid_t : String ] = [:]
     var body: some View {
         VStack {
@@ -51,7 +53,7 @@ struct ContentView: View {
     }
     
     func GetProcList() {
-        procList = ProcessManager.GetProcesInfoList()
+        procList = procManager.GetProcesInfoList()
     }
     
     func TerminateProcess(pid: Int32) {

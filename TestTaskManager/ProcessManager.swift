@@ -9,21 +9,52 @@ import Foundation
 import AppKit
 import Darwin
 
-public struct ProcessInfo: Identifiable {
-    public let id = UUID()
-    let pid: Int32
-    let processName: String
-}
-
 public class ProcessManager : NSObject
 {
-    public static func GetProcesInfoList() -> [ProcessInfo]
+    var _processList: [pid_t : String] = [:]
+    var _notificationCenter: NotificationCenter
+    
+    public override init() {
+        _notificationCenter = NSWorkspace.shared.notificationCenter
+        super.init()
+        
+        _processList = GetCmdProcessList()
+        InitObservers()
+    }
+    
+    private func InitObservers()
+    {
+        _notificationCenter.addObserver(self, selector: #selector(OnProcessStart), name: NSWorkspace.didLaunchApplicationNotification, object: nil)
+        _notificationCenter.addObserver(self, selector: #selector(OnProcessTerminate), name: NSWorkspace.didTerminateApplicationNotification, object: nil)
+    }
+    
+    // works only for app with GUI
+    @objc func OnProcessStart(notification: NSNotification) -> Void
+    {
+        // insert to proc list
+        if let userInfo = notification.userInfo, let terminatedPid = userInfo["NSApplicationProcessIdentifier"]
+        {
+            print(userInfo["NSApplicationPath"])
+            _processList[terminatedPid as! Int32] = userInfo["NSApplicationPath"] as! String // check pid for correct cast
+        }
+    }
+    
+    @objc func OnProcessTerminate(notification: NSNotification) -> Void
+    {
+        // remove from proc list
+        if let userInfo = notification.userInfo, let terminatedPid = userInfo["NSApplicationProcessIdentifier"]
+        {
+            print(userInfo["NSApplicationPath"])
+            _processList[terminatedPid as! Int32] = nil // check pid for correct cast
+        }
+    }
+    
+    // need for prepare data for UI
+    func GetProcesInfoList() -> [ProcessInfo]
     {
         var result: [ProcessInfo] = []
-//        var procList: [pid_t : String] = [:]
-
-
-        let procList = GetCmdProcessList();
+        
+        let procList = GetCmdProcessList()
         
         procList.forEach({
             result.append(ProcessInfo.init(pid: $0.key, processName: $0.value))
@@ -34,7 +65,7 @@ public class ProcessManager : NSObject
         }
     }
     
-    private static func GetCmdProcessList() -> [pid_t : String]
+    func GetCmdProcessList() -> [pid_t : String]
     {
         var processes = [pid_t : String]()
         

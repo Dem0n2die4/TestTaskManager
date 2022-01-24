@@ -13,6 +13,7 @@
 		BF810DFC279CA35A00211414 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF810DFB279CA35A00211414 /* Preview Assets.xcassets */; };
 		BF810DFF279CA35A00211414 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF810DFD279CA35A00211414 /* Main.storyboard */; };
 		BFBAD951279CC03500E03CEC /* ProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAD950279CC03500E03CEC /* ProcessManager.swift */; };
+		BFDF952E279EBCAF0092526B /* ProcessInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDF952D279EBCAF0092526B /* ProcessInfo.swift */; };
 		BFE56B74279CB1ED0014A31B /* TestTaskManagerControl.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE56B73279CB1ED0014A31B /* TestTaskManagerControl.h */; };
 		BFE56B76279CB1ED0014A31B /* TestTaskManagerControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE56B75279CB1ED0014A31B /* TestTaskManagerControl.m */; };
 		BFE56B78279CB1ED0014A31B /* TestTaskManagerControl.tiff in Resources */ = {isa = PBXBuildFile; fileRef = BFE56B77279CB1ED0014A31B /* TestTaskManagerControl.tiff */; };
@@ -29,6 +30,7 @@
 		BF810E00279CA35A00211414 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF810E01279CA35A00211414 /* TestTaskManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestTaskManager.entitlements; sourceTree = "<group>"; };
 		BFBAD950279CC03500E03CEC /* ProcessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessManager.swift; sourceTree = "<group>"; };
+		BFDF952D279EBCAF0092526B /* ProcessInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessInfo.swift; sourceTree = "<group>"; };
 		BFE56B71279CB1ED0014A31B /* TestTaskManagerControl.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestTaskManagerControl.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE56B73279CB1ED0014A31B /* TestTaskManagerControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTaskManagerControl.h; sourceTree = "<group>"; };
 		BFE56B75279CB1ED0014A31B /* TestTaskManagerControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTaskManagerControl.m; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				BF810E01279CA35A00211414 /* TestTaskManager.entitlements */,
 				BF810DFA279CA35A00211414 /* Preview Content */,
 				BFBAD950279CC03500E03CEC /* ProcessManager.swift */,
+				BFDF952D279EBCAF0092526B /* ProcessInfo.swift */,
 			);
 			path = TestTaskManager;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				BFBAD951279CC03500E03CEC /* ProcessManager.swift in Sources */,
 				BF810DF7279CA35800211414 /* ContentView.swift in Sources */,
 				BF810DF5279CA35800211414 /* AppDelegate.swift in Sources */,
+				BFDF952E279EBCAF0092526B /* ProcessInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,9 +381,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TestTaskManager/TestTaskManager.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"TestTaskManager/Preview Content\"";
+				DEVELOPMENT_TEAM = KUAMS2Q33V;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TestTaskManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -399,9 +405,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TestTaskManager/TestTaskManager.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"TestTaskManager/Preview Content\"";
+				DEVELOPMENT_TEAM = KUAMS2Q33V;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TestTaskManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
